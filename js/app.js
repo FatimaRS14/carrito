@@ -31,16 +31,32 @@ const agregarCurso= (e) => {
     const agregarCarrito = curso =>{
         listadoCarrito = [...listadoCarrito, curso]
         console.log(listadoCarrito);
+        generaHTML();
     }
     //forma tradicional :))
     /*function agregarCarrito(curso){
 
     }*/
 
+    const generaHTML = () =>{
+        vaciarCarrito();
+        listadoCarrito.forEach(curso => {
+            const row = document.createElement('tr');
+            const cursoHTML = `
+            <td>${curso.nombre}</td>
+            `;
+            row.innnerHTML = cursoHTML;
+            contenedorCarrito.appendChild(row);
+        });
+    }
 
-const cargarEventListener = () => { 
-    //agregar funcion de carga de cursos al carrito
-    listaCursos.addEventListener('click', agregarCurso);
-}
+    const vaciarCarrito = () =>{
 
-cargarEventListener();
+        }
+        
+    const cargarEventListener = () => { 
+        //agregar funcion de carga de cursos al carrito
+        listaCursos.addEventListener('click', agregarCurso);
+    }
+
+    cargarEventListener();
