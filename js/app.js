@@ -18,6 +18,7 @@ const agregarCurso= (e) => {
             nombre: curso.querySelector('h4').textContent,
             precio: curso.querySelector('p.precio').textContent.addEventListener,
             //se le pone solo 1 por que es una valor estaticos que nostros definimos para el selector ya que no esta declarado directramente en el HTML
+            id: curso.querySelector('.agregar-carrito').getAttribute('data-id'),
             cantidad: 1
 
         }
@@ -26,7 +27,7 @@ const agregarCurso= (e) => {
     }
         
     }
-
+     //ayuda de los array's
     const agregarCarrito = curso =>{
         listadoCarrito = [...listadoCarrito, curso]
         console.log(listadoCarrito);
