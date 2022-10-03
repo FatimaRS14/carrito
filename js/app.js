@@ -10,7 +10,7 @@ const agregarCurso= (e) => {
     //console.log("Presionaste en el div");
     //console.log(e.target);
     if(e.target.classList.contains('agregar-carrito')){
-        console.log("Presionaste el boton");
+        console.log(e.target);
     }
 
 }
