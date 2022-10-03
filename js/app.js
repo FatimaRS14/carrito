@@ -1,7 +1,7 @@
 //variables para diferenciar a objetos del documento
 const carrito = document.querySelector('#carrito');
 const listaCursos = document.querySelector('#lista-cursos');
-const contenedor = document.querySelector('#lista-carrito tbody');
+const contenedorCarrito = document.querySelector('#lista-carrito tbody');
 const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
 
 let listadoCarrito = [];
@@ -43,9 +43,16 @@ const agregarCurso= (e) => {
         listadoCarrito.forEach(curso => {
             const row = document.createElement('tr');
             const cursoHTML = `
+            <td>
+            <img src= "${curso.imagen}" width=100>
+            </td>
             <td>${curso.nombre}</td>
+            <td>${curso.precio}</td>
+            <td>${curso.cantidad}</td>
+            
             `;
-            row.innnerHTML = cursoHTML;
+            row.innerHTML = cursoHTML;
+            console.log(row)
             contenedorCarrito.appendChild(row);
         });
     }
