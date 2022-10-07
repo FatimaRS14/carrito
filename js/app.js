@@ -16,7 +16,7 @@ const agregarCurso= (e) => {
         const infoCurso ={
             imagen: curso.querySelector('img').src,
             nombre: curso.querySelector('h4').textContent,
-            precio: curso.querySelector('p.precio').textContent.addEventListener,
+            precio: curso.querySelector('p.precio').textContent,
             //se le pone solo 1 por que es una valor estaticos que nostros definimos para el selector ya que no esta declarado directramente en el HTML
             id: curso.querySelector('.agregar-carrito').getAttribute('data-id'),
             cantidad: 1
@@ -29,7 +29,24 @@ const agregarCurso= (e) => {
     }
      //ayuda de los array's
     const agregarCarrito = curso =>{
-        listadoCarrito = [...listadoCarrito, curso]
+        //console.log("Curso a agregar")
+        //console.log(curso.id)
+        //console.log("Listado de cursos")
+        //listadoCarrito.forEach(curso=> console(curso.id))
+       // listadoCarrito.map(curso=>)//modifica cada uno de los elementos dependiendo de la funcionalidad
+       if(listadoCarrito.some(cursoInCarrito => cursoInCarrito.id === curso.id)){
+       let carrito= listadoCarrito.map(cursoInCarrito => {//Agregamos map para modificar los elementos quese iran añadiendo al carrido (solo se ira sumando el contador)
+        if(cursoInCarrito.id=== curso.id){
+            cursoInCarrito.cantidad++;
+            return cursoInCarrito;
+        }else{
+            return cursoInCarrito
+        }
+       }) 
+       listadoCarrito = [...carrito];
+    }else{
+        listadoCarrito = [...listadoCarrito, curso];
+    }
         console.log(listadoCarrito);
         generaHTML();
     }
@@ -59,6 +76,7 @@ const agregarCurso= (e) => {
 
     const vaciarCarrito = () =>{
 
+        contenedorCarrito.innerHTML= '';
         }
         
     const cargarEventListener = () => { 
